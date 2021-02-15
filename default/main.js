@@ -29,12 +29,12 @@ module.exports.loop = function () {
         var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'h');
         var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'u');
         var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'b');
-        if(harvesters.length < 1) {
+        if(harvesters.length < 6) {
             var newName = 'h' + Game.time;
             Game.spawns['Spawn'].spawnCreep([WORK,CARRY,MOVE], newName, 
                 {memory: {role: 'h'}});
         }
-        else if((builders.length < 2) && (ForBuild.length > 0)) {
+        else if((builders.length < 3) && (ForBuild.length > 0)) {
             var newName = 'b' + Game.time;
             Game.spawns['Spawn'].spawnCreep([WORK,CARRY,MOVE], newName, 
                 {memory: {role: 'b'}});

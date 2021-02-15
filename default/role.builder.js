@@ -29,10 +29,14 @@ var roleBuilder = {
 		}
 	}
 	else {
-	var sources = creep.room.find(FIND_SOURCES);
-		if(creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
-			creep.moveTo(sources[0]);
-		}
+		var ContainerReload = creep.room.find(FIND_STRUCTURES, {
+			filter: (structure) => {
+				return (structure.structureType == STRUCTURE_CONTAINER)
+			}
+			})
+			if(creep.withdraw(ContainerReload[0],RESOURCE_ENERGY,50) == ERR_NOT_IN_RANGE) {
+				creep.moveTo(ContainerReload[0],RESOURCE_ENERGY,50);
+			}
 	}
 	}
 };
