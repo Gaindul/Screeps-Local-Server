@@ -1,7 +1,6 @@
 /*
 Eventually to be made to work
 */
-
 var roleBuilder = require('role.builder');
 var roleHarvester = {
     /** @param {Creep} creep **/

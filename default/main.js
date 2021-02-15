@@ -2,7 +2,6 @@
 var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
 var roleHarvester = require('role.harvester');
-
 module.exports.loop = function () {
     //clear memory
     for(var name in Memory.creeps) {
