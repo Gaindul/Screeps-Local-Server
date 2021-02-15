@@ -1,3 +1,4 @@
+var actionReload = require('action.Reload');
 //module to maintain room controller
 var roleUpgrader = {
     /** @param {Creep} creep **/
@@ -5,22 +6,18 @@ var roleUpgrader = {
 
         if(creep.memory.upgrading && creep.store[RESOURCE_ENERGY] == 0) {
             creep.memory.upgrading = false;
-	    }
-	    if(!creep.memory.upgrading && creep.store.getFreeCapacity() == 0) {
-	        creep.memory.upgrading = true;
-	        }
-
-	    if(creep.memory.upgrading) {
-            if(creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(creep.room.controller);
-            }
+    }
+    if(!creep.memory.upgrading && creep.store.getFreeCapacity() == 0) {
+        creep.memory.upgrading = true;
         }
-        else {
-            var energy = creep.room.find(FIND_SOURCES);
-            if(creep.harvest(energy[0]) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(energy[0]);
-            }
+    if(creep.memory.upgrading) {
+        if(creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
+            creep.moveTo(creep.room.controller);
         }
-	}
+    }
+    else {
+        actionReload.run(creep);
+        }
+    }
 };
 module.exports = roleUpgrader;

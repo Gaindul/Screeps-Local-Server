@@ -1,3 +1,4 @@
+var actionReload = require('action.Reload');
 var roleBuilder = {
     /** @param {Creep} creep **/
     run: function(creep) {
@@ -29,14 +30,7 @@ var roleBuilder = {
 		}
 	}
 	else {
-		var ContainerReload = creep.room.find(FIND_STRUCTURES, {
-			filter: (structure) => {
-				return (structure.structureType == STRUCTURE_CONTAINER)
-			}
-			})
-			if(creep.withdraw(ContainerReload[0],RESOURCE_ENERGY,50) == ERR_NOT_IN_RANGE) {
-				creep.moveTo(ContainerReload[0],RESOURCE_ENERGY,50);
-			}
+		actionReload.run(creep);
 	}
 	}
 };

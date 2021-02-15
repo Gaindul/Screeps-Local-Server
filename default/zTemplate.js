@@ -1,3 +1,4 @@
+var actionReload = require('action.Reload');
 var Template  = {
 
     /** @param {Creep} creep **/
